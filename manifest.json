@@ -1,0 +1,24 @@
+﻿{
+  "name": "在线源码解读助手",
+  "description": "在线源码解读助手",
+  "version": "0.1",
+  "permissions": ["contextMenus"],
+  "background": {
+    "service_worker": "script/background.js"
+  },
+  "manifest_version": 3,
+  "content_scripts": [ 
+    {
+      "all_frames": true,
+      "js": [ "script/jquery-3.7.1.min.js" ],
+      "matches": [ "https://github.com/*" ],
+      "run_at": "document_start"
+    }, 
+    {
+      "all_frames": true,
+      "js": ["script/content_script.js" ],
+      "matches": [ "https://github.com/*" ],
+      "run_at": "document_end"
+    }
+  ]
+}
